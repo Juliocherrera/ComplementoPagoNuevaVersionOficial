@@ -88,7 +88,7 @@ namespace CARGAR_EXCEL
             imgFDesde.Visible = false;
             imgFHasta.Visible = false;
             lblFact.Text = Request.QueryString["factura"];
-            //lblFact.Text = "40750";
+            //lblFact.Text = "40867";
             //foliot = Request.QueryString["factura"];
             if (IsPostBack)
             {
@@ -1829,7 +1829,7 @@ namespace CARGAR_EXCEL
                                 + "|" + "Tasa"
                                 + "|" + "0.160000"
                                 + "|" + TotaldeIva
-                                + "|" + basecalculado.Trim()
+                                + "|" + txtTotal.Text.Trim()
                                 + "|";
                             }
                             if (nodeToFind == true && nodeToFind2 == false)

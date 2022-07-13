@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-     <title>TDR | Complementos de Pago</title>
+     <title>TDR | Complementos de Pagos V2.0</title>
     <link rel="shortcut icon" href="images/icono-tdr-soluciones-logisticas.ico" />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
@@ -135,7 +135,7 @@ nav li#user-info > span:after{
 </head>
 <body class="bg-muted">
     <form id="form1" runat="server">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background:rgba(0, 25, 61, 0.9) !important;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background:rgba(0, 8, 20, 0.9) !important;">
   <a class="navbar-brand" href="#">
       <img src="images/logo.png" /></a>
 
@@ -188,7 +188,7 @@ nav li#user-info > span:after{
                             </figure>
                         </div>--%>
                         
-                        <div class="col-sm-12">
+                        <div class="col-sm-12" style="height:80vh; overflow-y:auto">
                             <div class="form-row">
                                 <%--<div class="form-group col-sm-10">
                                   <label for="txtName">Numero de orden</label>
@@ -258,7 +258,7 @@ nav li#user-info > span:after{
     </form>
     
      <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50" style="position: relative;
-    margin-top: 100vh;background:rgba(0, 25, 61, 0.9) !important;">
+    margin-top: 10vh;background:rgba(0, 8, 20, 0.9) !important;">
     <div class="container text-center text-white">
         <a href="#form1" style="font-size:28px;text-decoration:none;color:white"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></a><br />
       <small>2022 Copyright &copy; TDR Soluciones Logísticas</small>

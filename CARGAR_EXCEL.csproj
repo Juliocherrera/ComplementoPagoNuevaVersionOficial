@@ -135,6 +135,7 @@
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="CSinRfc.aspx" />
+    <Content Include="Cartaporte.aspx" />
     <Content Include="DownloadTxt.aspx" />
     <Content Include="images\56Z_2111.w012.n001.13B.p12.13.jpg" />
     <Content Include="images\alala.png" />
@@ -173,6 +174,13 @@
     </Compile>
     <Compile Include="CSinRfc.aspx.designer.cs">
       <DependentUpon>CSinRfc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cartaporte.aspx.cs">
+      <DependentUpon>Cartaporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cartaporte.aspx.designer.cs">
+      <DependentUpon>Cartaporte.aspx</DependentUpon>
     </Compile>
     <Compile Include="DownloadTxt.aspx.cs">
       <DependentUpon>DownloadTxt.aspx</DependentUpon>
