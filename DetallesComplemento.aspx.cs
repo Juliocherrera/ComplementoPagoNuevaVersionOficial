@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -90,7 +91,7 @@ namespace CARGAR_EXCEL
             imgFDesde.Visible = false;
             imgFHasta.Visible = false;
             lblFact.Text = Request.QueryString["factura"];
-            //lblFact.Text = "40831";
+            //lblFact.Text = "40809";
             //foliot = Request.QueryString["factura"];
             if (IsPostBack)
             {
@@ -1816,6 +1817,7 @@ namespace CARGAR_EXCEL
 
                             if (nodeToFind == true && nodeToFind2 == true)
                             {
+                                
                                 f07 = "CPAG20IMPRET"
                                  + "|" + iddelpago.Trim()
                                  + "|" + "001"
@@ -3546,7 +3548,9 @@ namespace CARGAR_EXCEL
             txtConcepto.Text = validaCampo(txtConcepto.Text.Trim());
 
             string path = System.Web.Configuration.WebConfigurationManager.AppSettings["dir2"] + lblFact.Text + ".txt";
+            
             using (System.IO.StreamWriter escritor = new System.IO.StreamWriter(path))
+                
 
 
 
@@ -3899,6 +3903,7 @@ namespace CARGAR_EXCEL
 
                 if (nodeToFind == true && nodeToFind2 == true)
                 {
+                    escrituraFactura = escrituraFactura.Replace(Environment.NewLine, "");
                     escritor.WriteLine(f07);
                     escrituraFactura += f07;
                     escritor.WriteLine(f08);
@@ -3908,6 +3913,7 @@ namespace CARGAR_EXCEL
                 {
                     if (rtiva == 1 && rtisr == 1)
                     {
+                        escrituraFactura = escrituraFactura.Replace(Environment.NewLine, "");
                         escritor.WriteLine(f07);
                         escrituraFactura += f07;
                         escritor.WriteLine(f08);
@@ -3915,6 +3921,7 @@ namespace CARGAR_EXCEL
                     }
                     else
                     {
+                        escrituraFactura = escrituraFactura.Replace("| \r\n", "");
                         escritor.WriteLine(f08);
                         escrituraFactura += f08;
                     }
@@ -3924,6 +3931,7 @@ namespace CARGAR_EXCEL
                 {
                     if (rtiva == 1 && rtisr == 1)
                     {
+                        escrituraFactura = escrituraFactura.Replace("| \r\n", "");
                         escritor.WriteLine(f07);
                         escrituraFactura += f07;
                         escritor.WriteLine(f08);
@@ -3946,6 +3954,8 @@ namespace CARGAR_EXCEL
 
 
             }
+            string[] strAllLines = File.ReadAllLines(path);
+            File.WriteAllLines(path, strAllLines.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray());
         }
         public void generaTXT()
         {
