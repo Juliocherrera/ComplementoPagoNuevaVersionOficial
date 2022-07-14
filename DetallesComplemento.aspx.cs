@@ -57,6 +57,7 @@ namespace CARGAR_EXCEL
         public decimal importePagos99 = 0;
         public decimal importePagos98 = 0;
         public decimal importePagosTotal2 = 0;
+        public decimal usdmoneda = 0;
         public decimal rtiva = 0;
         public decimal rtisr = 0;
         public bool nodeToFind;
@@ -91,7 +92,7 @@ namespace CARGAR_EXCEL
             imgFDesde.Visible = false;
             imgFHasta.Visible = false;
             lblFact.Text = Request.QueryString["factura"];
-            //lblFact.Text = "40809";
+            //lblFact.Text = "40745";
             //foliot = Request.QueryString["factura"];
             if (IsPostBack)
             {
@@ -1183,6 +1184,7 @@ namespace CARGAR_EXCEL
                                                                        + "| \r\n");
                                                             f07 = "";
                                                             f08 = "";
+                                                            usdmoneda = 1;
                                                         }
                                                         else
                                                         {
@@ -1645,6 +1647,9 @@ namespace CARGAR_EXCEL
                                                                       + "|" + "0"                                            //12 ImporteSaldoInsoluto
                                                                       + "|" + "01"
                                                                       + "| \r\n");
+                                                                            f07 = "";
+                                                                            f08 = "";
+                                                                            usdmoneda = 1;
                                                                         }
                                                                         else
                                                                         {
@@ -1855,6 +1860,11 @@ namespace CARGAR_EXCEL
                                     + "|" + basecalculado.Trim()
                                     + "|";
                                 }
+                                if (usdmoneda == 1)
+                                {
+                                    f07 = "";
+                                    f08 = "";
+                                }
                                 else
                                 {
                                     f08 = "CPAG20IMPTRA"
@@ -1888,6 +1898,11 @@ namespace CARGAR_EXCEL
                                     + "|" + TotaldeIva
                                     + "|" + basecalculado.Trim()
                                     + "|";
+                                }
+                                if (usdmoneda == 1)
+                                {
+                                    f07 = "";
+                                    f08 = "";
                                 }
                                 else
                                 {
@@ -3919,6 +3934,15 @@ namespace CARGAR_EXCEL
                         escritor.WriteLine(f08);
                         escrituraFactura += f08;
                     }
+                    if (usdmoneda == 1)
+                    {
+                        f07 = "";
+                        f08 = "";
+                        escritor.WriteLine(f07);
+                        escrituraFactura += f07;
+                        escritor.WriteLine(f08);
+                        escrituraFactura += f08;
+                    }
                     else
                     {
                         escrituraFactura = escrituraFactura.Replace("| \r\n", "");
@@ -3932,6 +3956,15 @@ namespace CARGAR_EXCEL
                     if (rtiva == 1 && rtisr == 1)
                     {
                         escrituraFactura = escrituraFactura.Replace("| \r\n", "");
+                        escritor.WriteLine(f07);
+                        escrituraFactura += f07;
+                        escritor.WriteLine(f08);
+                        escrituraFactura += f08;
+                    }
+                    if (usdmoneda == 1)
+                    {
+                        f07 = "";
+                        f08 = "";
                         escritor.WriteLine(f07);
                         escrituraFactura += f07;
                         escritor.WriteLine(f08);
