@@ -56,6 +56,8 @@ namespace CARGAR_EXCEL
         public decimal importePagos99 = 0;
         public decimal importePagos98 = 0;
         public decimal importePagosTotal2 = 0;
+        public decimal rtiva = 0;
+        public decimal rtisr = 0;
         public bool nodeToFind;
         public bool nodeToFind2;
 
@@ -88,7 +90,7 @@ namespace CARGAR_EXCEL
             imgFDesde.Visible = false;
             imgFHasta.Visible = false;
             lblFact.Text = Request.QueryString["factura"];
-            //lblFact.Text = "40867";
+            //lblFact.Text = "40831";
             //foliot = Request.QueryString["factura"];
             if (IsPostBack)
             {
@@ -558,9 +560,8 @@ namespace CARGAR_EXCEL
                                                                 try
                                                                 {
                                                                     importePagos57 = importePagos57 + Convert.ToDecimal(totalisr);
-
-
-                                                                }
+                                                                     rtisr = 1;
+    }
                                                                 catch (Exception ex)
                                                                 {
                                                                     string errors = ex.Message;
@@ -571,7 +572,7 @@ namespace CARGAR_EXCEL
                                                                 try
                                                                 {
                                                                     importePagos58 = importePagos58 + Convert.ToDecimal(totaliva);
-
+                                                                    rtiva = 1;
                                                                 }
                                                                 catch (Exception ex)
                                                                 {
@@ -1017,7 +1018,7 @@ namespace CARGAR_EXCEL
                                                             try
                                                             {
                                                                 importePagos77 = importePagos77 + Convert.ToDecimal(totalisr);
-                                                                
+                                                                rtisr = 1;
 
                                                             }
                                                             catch (Exception ex)
@@ -1030,7 +1031,7 @@ namespace CARGAR_EXCEL
                                                             try
                                                             {
                                                                 importePagos78 = importePagos78 + Convert.ToDecimal(totaliva);
-                                                                
+                                                                rtiva = 1;
                                                             }
                                                             catch (Exception ex)
                                                             {
@@ -1470,7 +1471,7 @@ namespace CARGAR_EXCEL
                                                                             try
                                                                             {
                                                                                 importePagos37 = importePagos37 + Convert.ToDecimal(totalisr);
-                                                                                
+                                                                                rtisr = 1;
 
                                                                             }
                                                                             catch (Exception ex)
@@ -1483,7 +1484,7 @@ namespace CARGAR_EXCEL
                                                                             try
                                                                             {
                                                                                 importePagos38 = importePagos38 + Convert.ToDecimal(totaliva);
-                                                                               
+                                                                                rtiva = 1;
                                                                             }
                                                                             catch (Exception ex)
                                                                             {
@@ -1834,23 +1835,67 @@ namespace CARGAR_EXCEL
                             }
                             if (nodeToFind == true && nodeToFind2 == false)
                             {
-                               
-                                f08 = "CPAG20IMPTRA"
-                                + "|" + iddelpago.Trim()
-                                + "|" + "002"
-                                + "|" + "Tasa"
-                                + "|" + "0.160000"
-                                + "|" + TotaldeIva
-                                + "|" + basecalculado.Trim()
-                                + "|";
+                                //Aqui va el IF si tienen IVA e ISR los folios anteriores
+                                //Se agrega totalIVA Y totalISR
+                                if (rtiva == 1 && rtisr == 1)
+                                {
+                                    f07 = "CPAG20IMPRET"
+                                    + "|" + iddelpago.Trim()
+                                    + "|" + "001"
+                                    + "|" + TotaldeRe
+                                    + "|";
+                                    f08 = "CPAG20IMPTRA"
+                                    + "|" + iddelpago.Trim()
+                                    + "|" + "002"
+                                    + "|" + "Tasa"
+                                    + "|" + "0.160000"
+                                    + "|" + TotaldeIva
+                                    + "|" + basecalculado.Trim()
+                                    + "|";
+                                }
+                                else
+                                {
+                                    f08 = "CPAG20IMPTRA"
+                                    + "|" + iddelpago.Trim()
+                                    + "|" + "002"
+                                    + "|" + "Tasa"
+                                    + "|" + "0.160000"
+                                    + "|" + TotaldeIva
+                                    + "|" + basecalculado.Trim()
+                                    + "|";
+                                }
+
+                                
                             }
                             if (nodeToFind == false && nodeToFind2 == true)
                             {
-                                f07 = "CPAG20IMPRET"
+                                //Aqui va el IF si tienen IVA e ISR los folios anteriores
+                                //Se agrega totalIVA Y totalISR
+                                if (rtiva == 1 && rtisr == 1)
+                                {
+                                    f07 = "CPAG20IMPRET"
+                                    + "|" + iddelpago.Trim()
+                                    + "|" + "001"
+                                    + "|" + TotaldeRe
+                                    + "|";
+                                    f08 = "CPAG20IMPTRA"
+                                    + "|" + iddelpago.Trim()
+                                    + "|" + "002"
+                                    + "|" + "Tasa"
+                                    + "|" + "0.160000"
+                                    + "|" + TotaldeIva
+                                    + "|" + basecalculado.Trim()
+                                    + "|";
+                                }
+                                else
+                                {
+                                    f07 = "CPAG20IMPRET"
                                 + "|" + iddelpago.Trim()
                                 + "|" + "001"
                                 + "|" + TotaldeRe
                                 + "|";
+                                }
+                                
                             }
 
 
@@ -3861,13 +3906,35 @@ namespace CARGAR_EXCEL
                 }
                 if (nodeToFind == true && nodeToFind2 == false)
                 {
-                    escritor.WriteLine(f08);
-                    escrituraFactura += f08;
+                    if (rtiva == 1 && rtisr == 1)
+                    {
+                        escritor.WriteLine(f07);
+                        escrituraFactura += f07;
+                        escritor.WriteLine(f08);
+                        escrituraFactura += f08;
+                    }
+                    else
+                    {
+                        escritor.WriteLine(f08);
+                        escrituraFactura += f08;
+                    }
+                        
                 }
                 if (nodeToFind == false && nodeToFind2 == true)
                 {
-                    escritor.WriteLine(f07);
-                    escrituraFactura += f07;
+                    if (rtiva == 1 && rtisr == 1)
+                    {
+                        escritor.WriteLine(f07);
+                        escrituraFactura += f07;
+                        escritor.WriteLine(f08);
+                        escrituraFactura += f08;
+                    }
+                    else
+                    {
+                        escritor.WriteLine(f07);
+                        escrituraFactura += f07;
+                    }
+                    
                 }
 
 
