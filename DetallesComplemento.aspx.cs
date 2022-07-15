@@ -60,6 +60,8 @@ namespace CARGAR_EXCEL
         public decimal usdmoneda = 0;
         public decimal rtiva = 0;
         public decimal rtisr = 0;
+        public decimal srtiva = 0;
+        public decimal srtisr = 0;
         public bool nodeToFind;
         public bool nodeToFind2;
 
@@ -92,7 +94,7 @@ namespace CARGAR_EXCEL
             imgFDesde.Visible = false;
             imgFHasta.Visible = false;
             lblFact.Text = Request.QueryString["factura"];
-            //lblFact.Text = "40745";
+            //lblFact.Text = "40862";
             //foliot = Request.QueryString["factura"];
             if (IsPostBack)
             {
@@ -1088,7 +1090,7 @@ namespace CARGAR_EXCEL
                                                             try
                                                             {
                                                                 importePagos97= importePagos97 + Convert.ToDecimal(totalisr);
-                                                                
+                                                                srtisr = 2;
 
                                                             }
                                                             catch (Exception ex)
@@ -1152,7 +1154,7 @@ namespace CARGAR_EXCEL
                                                             try
                                                             {
                                                                 importePagos88 = importePagos88 + Convert.ToDecimal(totaliva);
-                                                                
+                                                                srtiva = 3;
                                                             }
                                                             catch (Exception ex)
                                                             {
@@ -1545,7 +1547,7 @@ namespace CARGAR_EXCEL
                                                                             try
                                                                             {
                                                                                 importePagos99 = importePagos99 + Convert.ToDecimal(totalisr);
-                                                                                
+                                                                                srtisr = 2;
 
                                                                             }
                                                                             catch (Exception ex)
@@ -1610,7 +1612,7 @@ namespace CARGAR_EXCEL
                                                                             try
                                                                             {
                                                                                 importePagos98 = importePagos98 + Convert.ToDecimal(totaliva);
-                                                                               
+                                                                                srtiva = 3;
                                                                             }
                                                                             catch (Exception ex)
                                                                             {
@@ -1857,7 +1859,7 @@ namespace CARGAR_EXCEL
                                     + "|" + "Tasa"
                                     + "|" + "0.160000"
                                     + "|" + TotaldeIva
-                                    + "|" + basecalculado.Trim()
+                                    + "|" + txtTotal.Text.Trim()
                                     + "|";
                                 }
                                 if (usdmoneda == 1)
@@ -1873,7 +1875,7 @@ namespace CARGAR_EXCEL
                                     + "|" + "Tasa"
                                     + "|" + "0.160000"
                                     + "|" + TotaldeIva
-                                    + "|" + basecalculado.Trim()
+                                    + "|" + txtTotal.Text.Trim()
                                     + "|";
                                 }
 
@@ -1896,7 +1898,7 @@ namespace CARGAR_EXCEL
                                     + "|" + "Tasa"
                                     + "|" + "0.160000"
                                     + "|" + TotaldeIva
-                                    + "|" + basecalculado.Trim()
+                                    + "|" + txtTotal.Text.Trim()
                                     + "|";
                                 }
                                 if (usdmoneda == 1)
@@ -3934,6 +3936,16 @@ namespace CARGAR_EXCEL
                         escritor.WriteLine(f08);
                         escrituraFactura += f08;
                     }
+                    else
+                    {
+                        escritor.WriteLine(f08);
+                        escrituraFactura += f08;
+                    }
+                    //if (srtiva == 3)
+                    //{
+                    //    escritor.WriteLine(f08);
+                    //    escrituraFactura += f08;
+                    //}
                     if (usdmoneda == 1)
                     {
                         f07 = "";
@@ -3943,12 +3955,12 @@ namespace CARGAR_EXCEL
                         escritor.WriteLine(f08);
                         escrituraFactura += f08;
                     }
-                    else
-                    {
-                        escrituraFactura = escrituraFactura.Replace("| \r\n", "");
-                        escritor.WriteLine(f08);
-                        escrituraFactura += f08;
-                    }
+                    //else
+                    //{
+                    //    escrituraFactura = escrituraFactura.Replace("| \r\n", "");
+                    //    escritor.WriteLine(f08);
+                    //    escrituraFactura += f08;
+                    //}
                         
                 }
                 if (nodeToFind == false && nodeToFind2 == true)
@@ -3961,6 +3973,16 @@ namespace CARGAR_EXCEL
                         escritor.WriteLine(f08);
                         escrituraFactura += f08;
                     }
+                    else
+                    {
+                        escritor.WriteLine(f07);
+                        escrituraFactura += f07;
+                    }
+                    //if (srtisr == 2)
+                    //{
+                    //    escritor.WriteLine(f07);
+                    //    escrituraFactura += f07;
+                    //}
                     if (usdmoneda == 1)
                     {
                         f07 = "";
