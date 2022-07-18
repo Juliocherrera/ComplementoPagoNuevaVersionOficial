@@ -3732,6 +3732,38 @@ namespace CARGAR_EXCEL
                        + "|"                                     //17-Correo de envio                                                    
                        + "|" + "601"
                        + "|";
+                    escritor.WriteLine(
+               "04"                                                   //1-Tipo De Registro
+              + "|" + consecutivoconcepto.Trim()                       //2-Id Receptor
+              + "|" + claveproductoservicio.Trim()                                //3-RFC
+              + "|"                          //4-Nombre
+              + "|" + cantidad.Trim()                           //5-Pais
+              + "|" + claveunidad.Trim()                            //6-Calle
+              + "|"                             //7-Numero Exterior
+              + "|" + descripcion.Trim()                            //8-Numero Interior
+              + "|" + "0"                         //9-Colonia
+              + "|" + "0"                        //10-Localidad
+              + "|"                        //11-Referencia
+              + "|"                         //12-Municio/Delegacion
+              + "|" + "01"                          //13-EStado
+              + "|"
+              );
+
+
+                    escrituraFactura += "\\n04"                                                   //1-Tipo De Registro
+                    + "|" + consecutivoconcepto.Trim()                       //2-Id Receptor
+                  + "|" + claveproductoservicio.Trim()                                //3-RFC
+                  + "|"                          //4-Nombre
+                  + "|" + cantidad.Trim()                           //5-Pais
+                  + "|" + claveunidad.Trim()                            //6-Calle
+                  + "|"                             //7-Numero Exterior
+                  + "|" + descripcion.Trim()                            //8-Numero Interior
+                  + "|" + "0"                         //9-Colonia
+                  + "|" + "0"                        //10-Localidad
+                  + "|"                        //11-Referencia
+                  + "|"                         //12-Municio/Delegacion
+                  + "|" + "01"                          //13-EStado
+                  + "|";
 
                 }
                 else
@@ -3778,9 +3810,7 @@ namespace CARGAR_EXCEL
                        + "|"                                     //17-Correo de envio                                                    
                        + "|" + "601"
                        + "|";
-
-                }
-                escritor.WriteLine(
+                    escritor.WriteLine(
                "04"                                                   //1-Tipo De Registro
               + "|" + consecutivoconcepto.Trim()                       //2-Id Receptor
               + "|" + claveproductoservicio.Trim()                                //3-RFC
@@ -3798,20 +3828,23 @@ namespace CARGAR_EXCEL
               );
 
 
-                escrituraFactura += "\\n04"                                                   //1-Tipo De Registro
-                + "|" + consecutivoconcepto.Trim()                       //2-Id Receptor
-              + "|" + claveproductoservicio.Trim()                                //3-RFC
-              + "|"                          //4-Nombre
-              + "|" + cantidad.Trim()                           //5-Pais
-              + "|" + claveunidad.Trim()                            //6-Calle
-              + "|"                             //7-Numero Exterior
-              + "|" + descripcion.Trim()                            //8-Numero Interior
-              + "|" + "0"                         //9-Colonia
-              + "|" + "0"                        //10-Localidad
-              + "|"                        //11-Referencia
-              + "|"                         //12-Municio/Delegacion
-              + "|" + "02"                          //13-EStado
-              + "|";
+                    escrituraFactura += "\\n04"                                                   //1-Tipo De Registro
+                    + "|" + consecutivoconcepto.Trim()                       //2-Id Receptor
+                  + "|" + claveproductoservicio.Trim()                                //3-RFC
+                  + "|"                          //4-Nombre
+                  + "|" + cantidad.Trim()                           //5-Pais
+                  + "|" + claveunidad.Trim()                            //6-Calle
+                  + "|"                             //7-Numero Exterior
+                  + "|" + descripcion.Trim()                            //8-Numero Interior
+                  + "|" + "0"                         //9-Colonia
+                  + "|" + "0"                        //10-Localidad
+                  + "|"                        //11-Referencia
+                  + "|"                         //12-Municio/Delegacion
+                  + "|" + "02"                          //13-EStado
+                  + "|";
+
+                }
+                
                 //CPAG20 (1:1)
                 escritor.WriteLine(
                 "CPAG20"                         //1-Tipo De Registro
