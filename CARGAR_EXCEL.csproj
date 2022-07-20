@@ -144,6 +144,9 @@
     <Content Include="images\icono-tdr-soluciones-logisticas.ico" />
     <Content Include="images\kisspng-bank-personal-finance-icon-finance-and-investment-banking-icon-5a8ec1bebeb831.6970510715193051507812.png" />
     <Content Include="images\kisspng-small-business-management-company-businessman-fingers-download-to-a-report-picture-5a6f78666b15f9.1147671415172547584386.png" />
+    <Content Include="images\pngwing.com %281%29.png" />
+    <Content Include="images\pngwing.com %282%29.png" />
+    <Content Include="images\pngwing.com %283%29.png" />
     <Content Include="images\transparent-logo-font-line-symbol-yellow-61dbb412c176d6.9459805016417884347924.png" />
     <Content Include="Inicial.aspx" />
     <Content Include="Default.aspx" />
@@ -157,6 +160,7 @@
     <Content Include="images\logo.png" />
     <Content Include="Listado.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MainPage.aspx" />
     <Content Include="Salir.aspx" />
     <Content Include="TxtGenerados\40853.txt" />
     <Content Include="Web.config" />
@@ -240,6 +244,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.aspx.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainPage.aspx.designer.cs">
+      <DependentUpon>MainPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelosFact.cs" />
     <Compile Include="Models\ModelFact.cs" />
